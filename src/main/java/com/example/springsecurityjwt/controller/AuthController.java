@@ -26,7 +26,7 @@ public class AuthController {
         this.jwtProvider = jwtProvider;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register")   //регистрация в БД нового пользователя
     @ResponseBody
     public String registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
         UserEntity userEntity = new UserEntity();
@@ -36,11 +36,11 @@ public class AuthController {
         return "OK";
     }
 
-    @PostMapping("/auth")
+    @PostMapping("/auth")  //получение jwt токена зарегестрированным пользователем
     @ResponseBody
     public AuthResponse auth(@RequestBody @Valid AuthRequest request) {
         UserEntity userEntity = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
-        String token = jwtProvider.generateToken(userEntity.getLogin());
+        String token = jwtProvider.createToken(userEntity.getLogin());
         return new AuthResponse(token);
     }
 }

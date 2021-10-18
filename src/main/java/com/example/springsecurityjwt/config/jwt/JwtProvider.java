@@ -1,9 +1,9 @@
 package com.example.springsecurityjwt.config.jwt;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.example.springsecurityjwt.exceprion.JwtAuthenticationException;
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -16,26 +16,27 @@ public class JwtProvider {
     @Value("$(jwt.secret)")
     private String jwtSecret;
 
-    public String generateToken(String login) {
-        Date date = Date.from(LocalDate.now().plusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+    public String createToken(String login) {
+        Date now = new Date();
+        Date validity = Date.from(LocalDate.now().plusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
         return Jwts.builder()
                 .setSubject(login)
-                .setExpiration(date)
+                .setIssuedAt(now)
+                .setExpiration(validity)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
 
-    public boolean validateToken(String token) {
+    public boolean validateToken(String token) throws JwtAuthenticationException {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
-            return true;
-        } catch (Exception ignored) {
+            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            return !claimsJws.getBody().getExpiration().before(new Date());
+        } catch (JwtException | IllegalArgumentException e) {
+            throw new JwtAuthenticationException("JWT token is expired or invalid", HttpStatus.UNAUTHORIZED);
         }
-        return false;
     }
 
     public String getLoginFromToken(String token) {
-        Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
-        return claims.getSubject();
+        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 }

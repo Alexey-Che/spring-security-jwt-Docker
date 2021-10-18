@@ -15,6 +15,8 @@
 	<description>Test task</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<jwt.version>0.9.1</jwt.version>
+		<hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -32,7 +34,7 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
+			<version>${jwt.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -63,7 +65,7 @@
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>6.0.13.Final</version>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
 	</dependencies>
 

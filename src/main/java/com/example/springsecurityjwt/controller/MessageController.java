@@ -33,7 +33,7 @@ public class MessageController {
         this.converter = converter;
     }
 
-    @PostMapping("/message")
+    @PostMapping("/message") //сохранение сообщения от авторизованного пользователя, либо получение истории сообщений
     @ResponseBody
     public List<MessageResponse> addMessage(@RequestBody @Valid MessageRequest messageRequest) {
         List<MessageResponse> result = new ArrayList<>();
