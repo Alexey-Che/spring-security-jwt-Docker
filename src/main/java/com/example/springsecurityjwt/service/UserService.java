@@ -22,11 +22,11 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserEntity saveUser(UserEntity userEntity) {
+    public void saveUser(UserEntity userEntity) {
         RoleEntity userRole = roleEntityRepository.findByName("ROLE_USER");
         userEntity.setRoleEntity(userRole);
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
-        return userEntityRepository.save(userEntity);
+        userEntityRepository.save(userEntity);
     }
 
     public UserEntity findByLogin(String login) {

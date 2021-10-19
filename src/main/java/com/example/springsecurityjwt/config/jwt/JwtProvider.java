@@ -1,6 +1,6 @@
 package com.example.springsecurityjwt.config.jwt;
 
-import com.example.springsecurityjwt.exceprion.JwtAuthenticationException;
+import com.example.springsecurityjwt.exception.JwtAuthenticationException;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

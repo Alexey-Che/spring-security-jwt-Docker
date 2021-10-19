@@ -3,8 +3,8 @@ package com.example.springsecurityjwt.controller;
 import com.example.springsecurityjwt.converter.MessageEntityConverter;
 import com.example.springsecurityjwt.entity.MessageEntity;
 import com.example.springsecurityjwt.entity.UserEntity;
-import com.example.springsecurityjwt.entity.request.MessageRequest;
-import com.example.springsecurityjwt.entity.response.MessageResponse;
+import com.example.springsecurityjwt.entity.request.MessageRequestDto;
+import com.example.springsecurityjwt.entity.response.MessageResponseDto;
 import com.example.springsecurityjwt.service.MessageService;
 import com.example.springsecurityjwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,14 +34,12 @@ public class MessageController {
 
     @PostMapping("/message") //сохранение сообщения от авторизованного пользователя, либо получение истории сообщений
     @ResponseBody
-    public List<MessageResponse> addMessage(@RequestBody @Valid MessageRequest messageRequest) {
-        List<MessageResponse> result = new ArrayList<>();
+    public List<MessageResponseDto> addMessage(@RequestBody @Valid MessageRequestDto messageRequest) {
+        List<MessageResponseDto> result = new ArrayList<>();
         if (messageRequest.getMessage().startsWith("history ")){
-            int value = Integer.parseInt(messageRequest.getMessage().replaceAll("[^0-9]+", ""));
-            return messageService.getAllMessage()
+            int limit = Integer.parseInt(messageRequest.getMessage().replaceAll("[^0-9]+", ""));
+            return messageService.getMessageHistory(limit)
                     .stream()
-                    .sorted(Comparator.comparing(MessageEntity::getId).reversed())
-                    .limit(value)
                     .map(converter::convertToMessageResponse)
                     .collect(Collectors.toList());
         }

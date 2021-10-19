@@ -1,4 +1,4 @@
-package com.example.springsecurityjwt.exceprion;
+package com.example.springsecurityjwt.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

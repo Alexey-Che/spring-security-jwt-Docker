@@ -5,9 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class MessageResponse {
+public class AuthResponseDto {
 
-    private Long id;
-    private String text;
-    private String author;
+    private String token;
 }

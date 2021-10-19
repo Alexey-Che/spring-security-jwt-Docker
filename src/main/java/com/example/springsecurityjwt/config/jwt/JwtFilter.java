@@ -3,6 +3,7 @@ package com.example.springsecurityjwt.config.jwt;
 import com.example.springsecurityjwt.config.CustomUserDetails;
 import com.example.springsecurityjwt.config.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,9 @@ import static org.springframework.util.StringUtils.hasText;
 @Component
 public class JwtFilter extends GenericFilterBean {
 
-    public static final String AUTHORIZATION = "Authorization";
+//    public static final String AUTHORIZATION = "Authorization";
+    @Value("${jwt.authorization}")
+    private String authorization;
 
     private final JwtProvider jwtProvider;
 
@@ -45,7 +48,7 @@ public class JwtFilter extends GenericFilterBean {
     }
 
     private String getTokenFromRequest(HttpServletRequest request) {
-        String bearer = request.getHeader(AUTHORIZATION);
+        String bearer = request.getHeader(authorization);
         if (hasText(bearer) && bearer.startsWith("Bearer ")) {
             return bearer.substring(7);
         }

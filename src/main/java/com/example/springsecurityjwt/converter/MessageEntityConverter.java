@@ -1,14 +1,14 @@
 package com.example.springsecurityjwt.converter;
 
 import com.example.springsecurityjwt.entity.MessageEntity;
-import com.example.springsecurityjwt.entity.response.MessageResponse;
+import com.example.springsecurityjwt.entity.response.MessageResponseDto;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MessageEntityConverter {
 
-    public MessageResponse convertToMessageResponse(MessageEntity messageEntity) {
-        return new MessageResponse(messageEntity.getId(), messageEntity.getText(),
+    public MessageResponseDto convertToMessageResponse(MessageEntity messageEntity) {
+        return new MessageResponseDto(messageEntity.getId(), messageEntity.getText(),
                 messageEntity.getAuthor().getLogin());
     }
 }

@@ -5,9 +5,10 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 
 @Data
-public class AuthRequest {
+public class MessageRequestDto {
+
     @NotEmpty
     private String login;
     @NotEmpty
-    private String password;
+    private String message;
 }
