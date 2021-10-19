@@ -1,4 +1,4 @@
-package com.example.springsecurityjwt.entity.request;
+package com.example.springsecurityjwt.dto.request;
 
 import lombok.Data;
 

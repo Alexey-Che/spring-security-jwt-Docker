@@ -1,7 +1,7 @@
 package com.example.springsecurityjwt.converter;
 
 import com.example.springsecurityjwt.entity.MessageEntity;
-import com.example.springsecurityjwt.entity.response.MessageResponseDto;
+import com.example.springsecurityjwt.dto.response.MessageResponseDto;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package com.example.springsecurityjwt.entity.response;
+package com.example.springsecurityjwt.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
