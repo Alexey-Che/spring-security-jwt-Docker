@@ -1,4 +1,4 @@
-create table role_table
+create table public.role_table
 (
     id   serial      not null
         constraint role_table_pk
@@ -7,7 +7,7 @@ create table role_table
 );
 
 
-create table user_table
+create table public.user_table
 (
     id       serial not null
         constraint user_table_pk
@@ -19,7 +19,7 @@ create table user_table
             references role_table
 );
 
-create table message
+create table public.message
 (
     id      serial
         constraint message_pk

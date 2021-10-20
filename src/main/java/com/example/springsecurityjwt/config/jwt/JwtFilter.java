@@ -21,7 +21,6 @@ import static org.springframework.util.StringUtils.hasText;
 @Component
 public class JwtFilter extends GenericFilterBean {
 
-//    public static final String AUTHORIZATION = "Authorization";
     @Value("${jwt.authorization}")
     private String authorization;
 
