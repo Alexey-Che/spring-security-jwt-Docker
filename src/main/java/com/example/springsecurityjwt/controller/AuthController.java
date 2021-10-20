@@ -1,10 +1,10 @@
 package com.example.springsecurityjwt.controller;
 
 import com.example.springsecurityjwt.config.jwt.JwtProvider;
-import com.example.springsecurityjwt.entity.UserEntity;
 import com.example.springsecurityjwt.dto.request.AuthRequestDto;
 import com.example.springsecurityjwt.dto.request.RegistrationRequestDto;
 import com.example.springsecurityjwt.dto.response.AuthResponseDto;
+import com.example.springsecurityjwt.entity.UserEntity;
 import com.example.springsecurityjwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
