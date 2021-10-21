@@ -10,7 +10,11 @@
 
 cp target/spring-security-jwt.jar src/main/docker //копируем файл JAR в директорию src/main/docker
 
+<<<<<<< HEAD
 cd C:\download\spring-security-jwt\src\main\docker // меняем текущий каталог src\main\docker
+=======
+cd C:\download\spring-security-jwt\src\main\docker // меняем текущий каталог src\main\docker  
+>>>>>>> origin/master
 
 docker build -t spring-security-jwt.jar .   // создаем "image"  проекта
 
@@ -18,7 +22,11 @@ docker compose up -d //запускаем docker compose
 
 
 
+<<<<<<< HEAD
 Описание эндпойнтов:
+=======
+Описание эндпойнтов:  
+>>>>>>> origin/master
 
 @RestController AuthController
 
@@ -33,7 +41,10 @@ docker compose up -d //запускаем docker compose
 @PostMapping("/message")  http://localhost:8080/message
 сохранение сообщения от авторизованного пользователя, либо получение истории сообщений request: MessageRequestDto { "login": "", "message": "" } response: List возвращает переданное сообщение, либо при сообщении вида "history x" возвращает х последних пользовательских сообщений
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> origin/master
