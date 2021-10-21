@@ -18,17 +18,18 @@ docker compose up -d //запускаем docker compose
 
 
 
-Описание эндпойнтов:
+Описание эндпойнтов:  
 
 @RestController AuthController
 
-@PostMapping("/register")
+@PostMapping("/register")   //http://localhost:8080/register
 регистрация в БД нового пользователя request: RegistrationRequestDto { "login": "", "password": "" } response: "OK"
 
-@PostMapping("/auth")
+@PostMapping("/auth")    //http://localhost:8080/auth
 получение jwt токена зарегестрированным пользователем request: AuthRequestDto { "login": "", "password": "" } response: AuthResponseDto { "{сгенерированный jwt токен}", }
 
 @RestController MessageController
 
-@PostMapping("/message") сохранение сообщения от авторизованного пользователя, либо получение истории сообщений request: MessageRequestDto { "login": "", "message": "" } response: List возвращает переданное сообщение, либо при сообщении вида "history x" возвращает х последних пользовательских сообщений
+@PostMapping("/message")  http://localhost:8080/message
+сохранение сообщения от авторизованного пользователя, либо получение истории сообщений request: MessageRequestDto { "login": "", "message": "" } response: List возвращает переданное сообщение, либо при сообщении вида "history x" возвращает х последних пользовательских сообщений
 
