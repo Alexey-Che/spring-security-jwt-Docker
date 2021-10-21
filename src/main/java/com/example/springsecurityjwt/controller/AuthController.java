@@ -4,13 +4,12 @@ import com.example.springsecurityjwt.config.jwt.JwtProvider;
 import com.example.springsecurityjwt.dto.request.AuthRequestDto;
 import com.example.springsecurityjwt.dto.request.RegistrationRequestDto;
 import com.example.springsecurityjwt.dto.response.AuthResponseDto;
+import com.example.springsecurityjwt.entity.RoleEntity;
 import com.example.springsecurityjwt.entity.UserEntity;
+import com.example.springsecurityjwt.repository.RoleEntityRepository;
 import com.example.springsecurityjwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -19,12 +18,20 @@ public class AuthController {
 
     private final UserService userService;
     private final JwtProvider jwtProvider;
+    private final RoleEntityRepository roleEntityRepository;
 
     @Autowired
-    public AuthController(UserService userService, JwtProvider jwtProvider) {
+    public AuthController(UserService userService, JwtProvider jwtProvider, RoleEntityRepository roleEntityRepository) {
         this.userService = userService;
         this.jwtProvider = jwtProvider;
+        this.roleEntityRepository = roleEntityRepository;
     }
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello";
+    }
+
+
 
     @PostMapping("/register")   //регистрация в БД нового пользователя
     @ResponseBody

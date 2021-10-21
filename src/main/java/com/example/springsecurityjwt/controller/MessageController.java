@@ -1,10 +1,11 @@
 package com.example.springsecurityjwt.controller;
 
 import com.example.springsecurityjwt.converter.MessageEntityConverter;
+import com.example.springsecurityjwt.dto.request.MessageRequestDto;
+import com.example.springsecurityjwt.dto.request.RegistrationRequestDto;
+import com.example.springsecurityjwt.dto.response.MessageResponseDto;
 import com.example.springsecurityjwt.entity.MessageEntity;
 import com.example.springsecurityjwt.entity.UserEntity;
-import com.example.springsecurityjwt.dto.request.MessageRequestDto;
-import com.example.springsecurityjwt.dto.response.MessageResponseDto;
 import com.example.springsecurityjwt.service.MessageService;
 import com.example.springsecurityjwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

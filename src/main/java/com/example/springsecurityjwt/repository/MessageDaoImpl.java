@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class MessageDaoImpl implements MessageDao{
+public class MessageDaoImpl implements MessageDao {
 
     @PersistenceContext
     private final EntityManager entityManager;

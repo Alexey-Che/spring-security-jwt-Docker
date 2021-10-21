@@ -83,5 +83,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>spring-security-jwt</finalName>
 	</build>
 </project>

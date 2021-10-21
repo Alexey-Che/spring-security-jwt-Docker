@@ -1,7 +1,6 @@
 package com.example.springsecurityjwt.repository;
 
 import com.example.springsecurityjwt.entity.RoleEntity;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

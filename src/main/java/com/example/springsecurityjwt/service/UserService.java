@@ -23,6 +23,9 @@ public class UserService {
     }
 
     public void saveUser(UserEntity userEntity) {
+        if(roleEntityRepository.findByName("ROLE_USER") == null) {
+            roleEntityRepository.save(new RoleEntity("ROLE_USER"));
+        }
         RoleEntity userRole = roleEntityRepository.findByName("ROLE_USER");
         userEntity.setRoleEntity(userRole);
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
@@ -42,4 +45,6 @@ public class UserService {
         }
         return null;
     }
+
+
 }

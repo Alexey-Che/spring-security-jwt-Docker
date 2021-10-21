@@ -15,4 +15,12 @@ public class RoleEntity {
 
     @Column
     private String name;
+
+    public RoleEntity(String role_user) {
+        this.name = role_user;
+    }
+
+    public RoleEntity() {
+
+    }
 }
