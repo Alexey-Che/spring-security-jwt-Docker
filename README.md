@@ -16,7 +16,7 @@ cd C:\download\spring-security-jwt\src\main\docker // меняем текущи�
 
 docker build -t spring-security-jwt.jar .   // создаем "image"  проекта
 
-docker compose up -d //запускаем docker compose
+docker compose up   //запускаем docker compose
 
 
 Описание эндпойнтов:  
