@@ -10,9 +10,9 @@
 
 cp target/spring-security-jwt.jar src/main/docker //копируем файл JAR в директорию src/main/docker
 
-cd C:\...\spring-security-jwt\src\main\docker // меняем текущий каталог src\main\docker
+cd C:\\...\spring-security-jwt\src\main\docker // меняем текущий каталог src\main\docker
 
-cd C:\...\spring-security-jwt\src\main\docker // меняем текущий каталог src\main\docker  
+cd C:\\...\spring-security-jwt\src\main\docker // меняем текущий каталог src\main\docker  
 
 docker build -t spring-security-jwt.jar .   // создаем "image"  проекта
 

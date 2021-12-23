@@ -2,7 +2,9 @@ version: '3.1'
 
 services:
   app:
-    image: 'spring-security-jwt.jar'
+#    image: 'spring-security-jwt.jar'
+    build:
+      context: .
     ports:
       - "8080:8080"
     container_name: app
@@ -12,21 +14,17 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/spring_course
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
   db:
     image: postgres
     restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
     container_name: db
+    hostname: db.docker
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=spring_course
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-

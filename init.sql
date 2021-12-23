@@ -1,5 +1,3 @@
-CREATE SCHEMA public
-
 create table public.role_table
 (
     id   serial      not null
@@ -8,8 +6,7 @@ create table public.role_table
     name varchar(20) not null
 );
 
-
-create table spring_course.user_table
+create table public.user_table
 (
     id       serial not null
         constraint user_table_pk
@@ -21,7 +18,7 @@ create table spring_course.user_table
             references role_table
 );
 
-create table spring_course.message
+create table public.message_table
 (
     id      serial
         constraint message_pk
@@ -31,23 +28,5 @@ create table spring_course.message
         constraint message_user__fk
             references user_table
 );
-CREATE TABLE IF NOT EXISTS role_table(
-    id int NOT NULL PRIMARY KEY ,
-    name TEXT
-);
 
-
-CREATE TABLE IF NOT EXISTS user_table(
-    id int NOT NULL PRIMARY KEY,
-    login TEXT,
-    password TEXT,
-    role_id int,
-    FOREIGN KEY (role_id) REFERENCES role_table(id)
-);
-
-CREATE TABLE IF NOT EXISTS message_table(
-    id int NOT NULL PRIMARY KEY,
-    text TEXT,
-    user_id int NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user_table(id)
-);
+insert into role_table(name) values ('ROLE_USER');
